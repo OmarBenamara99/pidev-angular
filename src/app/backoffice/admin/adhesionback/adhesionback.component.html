@@ -1,0 +1,215 @@
+
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			<app-navbar3></app-navbar3>
+			<!-- /Header -->
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<div class="breadcrumb-list">
+								<nav aria-label="breadcrumb" class="page-breadcrumb">
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Breadcrumb -->
+			<div class="page-banner">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<h1 class="mb-0">Club Memberships Demands</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Help Details -->
+			<div class="help-sec">
+				
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="help-title">
+								<h1>Memberships Demands</h1>
+								<p>Treat Memberships answers for Club questions from here</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row" *ngFor="let adhesion of adhesions">
+						<div class="col-lg-6">
+						
+							<!-- Faq -->							
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqone" aria-expanded="false">Why are you interested in joining this particular club ?</a>
+								</h6>
+								<div id="faqone" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionOne }}</p>
+									</div>
+								</div>
+							</div>
+							
+														
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqtwo" aria-expanded="false">What relevant skills or experiences do you have that make you a good fit for the club ?</a>
+								</h6>
+								<div id="faqtwo" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionTwo }}</p>									</div>
+								</div>
+							</div>
+							
+														
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">Have you been involved in similar clubs or activities before ?</a>
+								</h6>
+								<div id="faqthree" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionThree }}</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">Do you have any ideas or suggestions for club activities or initiatives ?</a>
+								</h6>
+								<div id="faqfour" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionFour }}</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqfive" aria-expanded="false">Are you willing to commit to attending regular club meetings/events ?</a>
+								</h6>
+								<div id="faqfive" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionFive }}</p>
+									</div>
+								</div>
+							</div>
+							<!-- /Faq -->
+						
+						</div>	
+						
+						<div class="col-lg-6">
+						
+							<!-- Faq -->							
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqsix" aria-expanded="false">How many hours per week can you commit to the club ?</a>
+								</h6>
+								<div id="faqsix" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionSix }}</p>
+									</div>
+								</div>
+							</div>
+							
+														
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqseven" aria-expanded="false">Are there any specific days/times you are unavailable ?</a>
+								</h6>
+								<div id="faqseven" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionSeven }}</p>
+									</div>
+								</div>
+							</div>
+							
+														
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqeight" aria-expanded="false">Is there anything else you would like us to know about you ?</a>
+								</h6>
+								<div id="faqeight" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionEight }}</p>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="faq-card">
+								<h6 class="faq-title">
+									<a class="collapsed" data-bs-toggle="collapse" href="#faqnine" aria-expanded="false">Do you have any special requirements or accommodations that we should be aware of ?</a>
+								</h6>
+								<div id="faqnine" class="collapse">
+									<div class="faq-detail">
+										<p>{{ adhesion.questionNine }}</p>
+									</div>
+								</div>
+							</div>
+							<!-- /Faq -->
+						
+							<div class="go-dashboard text-center d-flex justify-content-between">
+								<p>application date : {{ adhesion.dateAdhesion }}</p>
+								<select class="form-select select country-select" [(ngModel)]="adhesion.status" style="text-align: center;">
+									<option value="Make Decision">Make Decision</option>
+									<option *ngFor="let decision of Decisions" [value]="decision">{{ decision }}</option>
+								  </select>
+								<a class="btn btn-primary" (click)="updateAdd(adhesion)" data-bs-toggle="modal" data-bs-target="#statusUpdateModal">Save</a>
+							  </div>
+
+
+						</div>	
+						<div style="margin-top: 20px; margin-bottom: 50px; border-top: 1px solid #ccc;"></div>
+					</div>
+
+					<div class="go-to-admin-club text-center" style="display: flex; justify-content: center; align-items: center; height: 8vh;">
+						<a class="btn btn-primary" routerLink="/admin/club" style="width: 400px; height: 50px; justify-content: center;">BACK</a>
+					</div>
+					
+					
+					
+				</div>
+				
+			</div>
+			<!-- /Help Details -->
+			
+			<!-- Footer -->
+			<app-footer></app-footer>
+			<!-- /Footer -->
+		   
+		</div>
+	   <!-- /Main Wrapper -->
+
+
+
+	   <div class="modal fade" id="statusUpdateModal" tabindex="-1" aria-labelledby="statusUpdateModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="statusUpdateModalLabel">Status Update</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  Status updated successfully!
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  
+	

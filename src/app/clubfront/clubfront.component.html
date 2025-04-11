@@ -1,0 +1,250 @@
+
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+            <app-navbar3></app-navbar3>
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-12">
+							<div class="breadcrumb-list">
+								<nav aria-label="breadcrumb" class="page-breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+										<li class="breadcrumb-item" aria-current="page">Courses</li>
+										<li class="breadcrumb-item active" aria-current="page">All Courses</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Course -->
+			<section class="course-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-9">
+						
+							<!-- Filter -->
+							<div class="showing-list">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="d-flex align-items-center">
+											<div class="view-icons">
+												<a href="course-grid.html" class="grid-view"><i class="feather-grid"></i></a>
+												<a href="course-list.html" class="list-view active"><i class="feather-list"></i></a>
+											</div>
+											<div class="show-result">
+												<h4>Showing 1-9 of 50 results</h4>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">	
+										<div class="show-filter add-course-info ">
+											<form action="#">
+												<div class="row gx-2 align-items-center">	
+													<div class="col-md-6 col-item">
+														<div class=" search-group">
+															<i class="feather-search"></i>
+															<input type="text" class="form-control" placeholder="Search our courses" >
+														</div>
+													</div>
+													<div class="col-md-6 col-lg-6 col-item">
+														<div class="input-block select-form mb-0">
+															<select class="form-select select"  name="sellist1">
+															  <option>Newly published </option>
+															  <option>published 1</option>
+															  <option>published 2</option>
+															  <option>published 3</option>
+															</select>
+														</div>
+													</div>						
+												</div>
+											</form>
+										</div>	
+									</div>
+								</div>
+							</div>
+							<!-- /Filter -->
+							
+							<div class="row">
+								
+								<div *ngFor="let club of clubs" class="col-lg-12 col-md-12 d-flex">
+									<div class="course-box course-design list-course d-flex">
+										<div class="product">
+											<div class="product-img">
+												
+													<img class="img-fluid" alt="" src="{{ club.image }}" (click)="resetRating(club.idclub)">
+												
+												<div class="price">
+													<h3>{{club.cat}}</h3>
+												</div>
+											</div>
+											<div class="product-content">
+												<div class="head-course-title">
+													<h3 class="title">
+														<a *ngIf="club.idclub !== undefined && isMembershipApplied(club.idclub) && getAdhesionStatus(club.idclub) === 'APPROVED'"
+
+															[routerLink]="['/admin/clubs/clubspace', club.idclub,club.clubSpace?.spaceid]">{{club.nom}}</a>
+															<ng-container *ngIf="club.idclub === undefined || !isMembershipApplied(club.idclub) || getAdhesionStatus(club.idclub) !== 'APPROVED'">
+
+															{{club.nom}}
+														</ng-container>
+													</h3>
+													
+													<div class="all-btn all-category d-flex align-items-center">
+														<!-- Conditionally display the button based on adhesion status -->
+														<ng-container *ngIf="isMembershipApplied(club.idclub)">
+															<button [style.background-color]="getButtonColor(club.idclub)" class="btn btn-secondary" disabled style="width: 150px; font-size: 12px; text-align: center;">
+																{{ club.idclub !== undefined && getAdhesionStatus(club.idclub) !== undefined ? getAdhesionStatus(club.idclub) : '' }}
+															</button>
+															
+														</ng-container>
+														<ng-container *ngIf="!isMembershipApplied(club.idclub)">
+															<a [routerLink]="['/student/club/apply', club.idclub]" class="btn btn-primary">APPLY FOR MEMBERSHIP</a>
+														</ng-container>
+													</div>
+
+												</div>
+												<p>{{club.description}}</p>
+												<div class="course-info border-bottom-0 pb-0 d-flex align-items-center">
+													<div class="rating-img d-flex align-items-center">
+														<img src="assets/img/icon-three/student.svg" alt="">
+														<p>112 membres</p>
+													</div>
+													<div  class="course-view d-flex align-items-center">
+														<a [href]="club.rs" target="_blank" rel="noopener noreferrer">
+														<img src="assets/img/net-icon-02.png" alt="">
+													</a>
+														<p>Facebook Page</p>
+													</div>
+													<div class="rating-img d-flex align-items-center" style="margin-left: auto;">
+														<img src="assets/img/net-icon-01.png" alt="">
+														<p>{{club.email}}</p>
+													</div>
+												</div>
+												<div>
+													<div class="rating">		
+														<!-- Filled stars -->
+														<ng-container *ngFor="let filledStar of filledStarsArrays[clubId]">
+														  <i class="fas fa-star filled"></i>
+														</ng-container>
+														
+														<!-- Empty stars -->
+														<ng-container *ngFor="let emptyStar of emptyStarsArrays[clubId]">
+														  <i class="fas fa-star"></i>
+														</ng-container>
+														
+														<!-- Display rating and number of adhesions -->
+														<span class="d-inline-block average-rating"><span>{{ rating }}</span> ({{ numAdhesions }})</span>
+													  </div>
+													  
+													  
+													  
+												<div class="d-flex align-items-center justify-content-end" style="margin-left: auto;">
+													<a (click)="rateClub(club?.idclub || 0)"><i class="fa-regular fa-heart"></i></a>
+												</div>
+											</div>
+												
+											</div>
+											
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+							
+							<!-- /pagination -->
+							<div class="row">
+								<div class="col-md-12">
+									<ul class="pagination lms-page">
+										<li class="page-item prev">
+											<a class="page-link" href="javascript:void(0)" tabindex="-1"><i class="fas fa-angle-left"></i></a>
+										</li>
+										<li class="page-item first-page active">
+											<a class="page-link" href="javascript:void(0)">1</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="javascript:void(0)">2</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="javascript:void(0)">3</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="javascript:void(0)">4</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="javascript:void(0)">5</a>
+										</li>
+										<li class="page-item next">
+											<a class="page-link" href="javascript:void(0)"><i class="fas fa-angle-right"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- /pagination -->
+							
+						</div>
+						<div class="col-lg-3 theiaStickySidebar">
+							<div class="filter-clear">
+								<div class="clear-filter d-flex align-items-center">
+									<h4><i class="feather-filter"></i>Filters</h4>
+									<div class="clear-text">
+										<p>CLEAR</p>
+									</div>
+								</div>
+								
+								<!-- Search Filter -->
+								
+								<!-- /Search Filter -->
+								
+								<!-- Search Filter -->
+								
+								<!-- /Search Filter -->
+								
+								<!-- Search Filter -->
+								
+								<!-- /Search Filter -->
+								
+								<!-- Latest Posts -->
+								<div class="card post-widget">
+									<div class="card-body">
+									  <div class="latest-head">
+										<h4 class="card-title">Top 3 Clubs of the Month</h4>
+									  </div>
+									  <ul class="latest-posts">
+										<li *ngFor="let club of clubs">
+										  <div class="post-thumb">
+											<a href="course-details.html">
+											  <img class="img-fluid" src="{{ club.image }}" alt="">
+											  <!-- Replace 'club.image' with the appropriate property containing the club's image URL -->
+											</a>
+										  </div>
+										  <div class="post-info free-color">
+											<h4>{{ club.nom }}</h4>
+											<!-- Replace 'club.name' with the appropriate property containing the club's name -->
+											<p>{{ club.cat }}</p>
+											<!-- Replace 'club.category' with the appropriate property containing the club's category -->
+										  </div>
+										</li>
+									  </ul>
+									</div>
+								  </div>
+								  
+								<!-- /Latest Posts -->
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Course -->
+			<app-footer></app-footer>
+			
+		   
+		</div>
