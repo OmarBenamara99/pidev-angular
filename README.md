@@ -1,27 +1,22 @@
-# FogbankFamily
+# University Mobility Management Platform – Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+## Overview
+Angular frontend for the microservices-based student mobility platform, deployed in a **multi-cloud environment** alongside the Spring Boot backend.
 
-## Development server
+## Tech Stack
+- **Frontend Framework:** Angular  
+- **Deployment:** Multi-cloud environment (Vercel, Render)  
+- **Integration:** Connects to Spring Boot backend services  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Key Features
+- Provides a responsive and user-friendly interface for student mobility management  
+- Displays mobility opportunities, application status, and notifications  
+- Ensures smooth interaction with backend services  
 
-## Code scaffolding
+## Achievements
+- Delivered a **scalable, multi-cloud frontend** integrated with backend services  
+- Enabled students and administrators to efficiently manage mobility processes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## What I Learned
+- Developing complex Angular frontends with multi-service integration  
+- Deploying and maintaining frontend applications in a multi-cloud setup
